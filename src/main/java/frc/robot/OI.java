@@ -14,10 +14,10 @@ import frc.robot.commands.*;
 
 
 public class OI {
-  public Joystick joystick1;
-  public Joystick joystick2;
-  public JoystickButton [] JbuttonRight;
-  public JoystickButton [] JbuttonLeft;
+  public Joystick driverLeftJoystick;
+  public Joystick driverRightJoystick;
+  public JoystickButton [] driverLeftJoystickButtons;
+  public JoystickButton [] driverRightJoystickButtons;
   RobotMap robotMap;
   
   public OI()
@@ -25,15 +25,15 @@ public class OI {
    try 
    {
     System.out.println("[System]<- Joysick Definition");
-    this.joystick1 = new Joystick(this.robotMap.JOYSTICK_1);
+    this.driverLeftJoystick = new Joystick(this.robotMap.DRIVER_LEFT_JOYSTICK);
     //this.joystick2 = new Joystick(this.robotMap.JOYSTICK_2);
     //this.JbuttonLeft = new JoystickButton[11];
-    this.JbuttonRight = new JoystickButton[11];
+    this.driverLeftJoystickButtons = new JoystickButton[12];
     /*for(int i = 0; i<JbuttonLeft.length; i++){
       this.JbuttonLeft[i] = new JoystickButton(this.joystick2,i);
     }*/
-      for(int i = 0; i<JbuttonRight.length; i++){
-        this.JbuttonRight[i] = new JoystickButton(this.joystick1,i);
+      for(int i = 0; i < driverLeftJoystickButtons.length; i++){
+        this.driverLeftJoystickButtons[i] = new JoystickButton(this.driverLeftJoystick,i);
       }
     }
     catch (Exception error) {
@@ -41,17 +41,20 @@ public class OI {
     }
     //this.JbuttonRight[6].whileHeld(new moveClimb(0));
     //this.JbuttonLeft[4].whileHeld(new moveClimb(1));
+    this.driverLeftJoystickButtons[1].whileHeld(new ShootBalls());
+    this.driverLeftJoystickButtons[3].whileHeld(new GatherBalls());
+    this.driverLeftJoystickButtons[2].whileHeld(new MoveBalls());
  } 
    
 
  public Joystick getRightJoystick()
  {
-  return this.joystick1;
+    return this.driverRightJoystick;
  }
 
  public Joystick getLeftJoystick()
  {
-  return this.joystick2;
+  return this.driverLeftJoystick;
  }
 
 }

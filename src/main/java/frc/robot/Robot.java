@@ -35,8 +35,8 @@ import edu.wpi.first.wpilibj.util.Color;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static AutoLine aLine;
-  public static BallGatherSys BGS;
-  public static TankDriveSubsystem m_tankDriveSys;
+  public static BallGatherSys m_BallGatherSys;
+  public static ArcadeDriveSubsystem m_arcadeDriveSys;
   public static ClimbingSys m_ClimbingSys;
   I2C.Port port = I2C.Port.kOnboard;
   ColorSensorV3 ColorSensor = new ColorSensorV3(port);
@@ -57,37 +57,38 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
    
-    m_tankDriveSys = new TankDriveSubsystem();
+    m_arcadeDriveSys = new ArcadeDriveSubsystem();
     m_drive = new Drive();
+    m_BallGatherSys = new BallGatherSys();
     m_ClimbingSys = new ClimbingSys();
-    m_tankDriveSys.diffDrive.feed();
-    m_tankDriveSys.diffDrive.feedWatchdog();
+    m_arcadeDriveSys.diffDrive.feed();
+    m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_oi = new OI();
-    String gameData;
-gameData = DriverStation.getInstance().getGameSpecificMessage();
-if(gameData.length() > 0)
-{
-  switch (gameData.charAt(0))
-  {
-    case 'B' :
-      //Blue case code
-      break;
-    case 'G' :
-      //Green case code
-      break;
-    case 'R' :
-      //Red case code
-      break;
-    case 'Y' :
-      //Yellow case code
-      break;
-    default :
-      //This is corrupt data
-      break;
-  }
-} else {
-  //Code for no data received yet
-}
+    //String gameData;
+//gameData = DriverStation.getInstance().getGameSpecificMessage();
+// if(gameData.length() > 0)
+// {
+//   switch (gameData.charAt(0))
+//   {
+//     case 'B' :
+//       //Blue case code
+//       break;
+//     case 'G' :
+//       //Green case code
+//       break;
+//     case 'R' :
+//       //Red case code
+//       break;
+//     case 'Y' :
+//       //Yellow case code
+//       break;
+//     default :
+//       //This is corrupt data
+//       break;
+//   }
+// } else {
+//   //Code for no data received yet
+// }
 
    
 
@@ -107,8 +108,8 @@ if(gameData.length() > 0)
    */
   @Override
   public void robotPeriodic() {
-    m_tankDriveSys.diffDrive.feed();
-    m_tankDriveSys.diffDrive.feedWatchdog();
+    m_arcadeDriveSys.diffDrive.feed();
+    m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);

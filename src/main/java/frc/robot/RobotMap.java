@@ -14,14 +14,27 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  public static final int pushRodMotor = 99;
-  public static final int DRIVE_MOTOR1 = 0, DRIVE_MOTOR2 = 1, DRIVE_MOTOR3 = 2, DRIVE_MOTOR4 = 3;
-  public static final int JOYSTICK_1 = 1;
-  public static final int JOYSTICK_2 = 0;
+  public static final int pushRodMotor = 99; // Needs changing
+  public static final int DRIVE_MOTOR_FRONT_RIGHT = 4;
+  public static final int DRIVE_MOTOR_FRONT_LEFT = 2;
+  public static final int DRIVE_MOTOR_REAR_RIGHT = 3;
+  public static final int DRIVE_MOTOR_REAR_LEFT = 1;
+  public static final int DRIVER_LEFT_JOYSTICK = 1; // Needs changing
+  public static final int DRIVER_RIGHT_JOYSTICK = 0; // Needs changing
+  public static final int SYSTEMS_JOYSTICK = 2; // Needs changing
   public static final int DIO_A = 0;
-  public static final int assmlyLineMotor = 4,suctionMotor = 5,shootMotor= 7;
-  public static final int ColorWheelMotor = 8;
+  public static final int SHOOT_MOTOR_RIGHT = 8;
+  public static final int SHOOT_MOTOR_LEFT = 7;
+  public static final int ASSEMBLY_LINE_MOTOR = 6;
+  public static final int SUCTION_MOTOR = 5;
+  public static final int ColorWheelMotor = 9;
   //public static int pushRodMotor = 99; //To be changed
+
+
+
+  // 00 - Roulete
+  // 
+
   
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.

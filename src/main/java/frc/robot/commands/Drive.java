@@ -4,12 +4,12 @@ import frc.robot.Robot;
 public class Drive extends Command {
   
   public Drive() {
-    requires(Robot.m_tankDriveSys);
+    requires(Robot.m_arcadeDriveSys);
   }
   @Override
   protected void execute() {
-    Robot.m_tankDriveSys.Drive(Robot.m_oi.joystick1);
-    Robot.m_tankDriveSys.diffDrive.feedWatchdog();
+    Robot.m_arcadeDriveSys.Drive(Robot.m_oi.driverLeftJoystick);
+    Robot.m_arcadeDriveSys.diffDrive.feedWatchdog();
   }
   
   @Override
