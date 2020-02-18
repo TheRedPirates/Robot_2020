@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class ShootBalls extends Command 
 {
-    private DigitalInput DI;
-    private RobotMap rm;
+    private DigitalInput DI; // CR 7
+    private RobotMap rm; // CR 8
 
     public ShootBalls()
     {
@@ -20,7 +20,7 @@ public class ShootBalls extends Command
     @Override
     public void execute()
     {
-        Robot.m_BallGatherSys.Shoot(0.9, 0.9);
+        Robot.m_BallGatherSys.Shoot(0.9, 0.9); // CR 11
     }
 
     @Override

@@ -9,10 +9,11 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+// CR 6
 public class ArcadeDriveSubsystem extends Subsystem {
     //private RobotMap rm;
     //public RobotDrive m_RobotDrive;
-    public WPI_TalonSRX T1, T2, T3, T4;
+    public WPI_TalonSRX T1, T2, T3, T4; // CR 5
     public DifferentialDrive diffDrive;
     public SpeedControllerGroup d_Right, d_Left;
   public ArcadeDriveSubsystem() {

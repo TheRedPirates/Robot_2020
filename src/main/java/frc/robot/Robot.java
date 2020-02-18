@@ -64,6 +64,9 @@ public class Robot extends TimedRobot {
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_oi = new OI();
+	
+	// CR 1
+	
     //String gameData;
 //gameData = DriverStation.getInstance().getGameSpecificMessage();
 // if(gameData.length() > 0)
@@ -108,6 +111,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+	  
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_colorMatcher.addColorMatch(kBlueTarget);
@@ -166,7 +170,7 @@ public class Robot extends TimedRobot {
     m_autonomousCommand = m_chooser.getSelected();
     System.out.println("[AutoLine]-> start!");
     aLine = new AutoLine();
-    System.out.println("[AutoLine]-> end!");
+    System.out.println("[AutoLine]-> end!"); // CR 4
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -220,5 +224,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+	  // CR 3
   }
 }

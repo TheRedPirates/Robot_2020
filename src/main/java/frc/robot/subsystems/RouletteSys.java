@@ -17,6 +17,8 @@ public class RouletteSys extends Subsystem
         this.motor = new WPI_TalonSRX(rm.ROULETTE_MOTOR);
     }
 
+
+	// CR 8
     public void Spin(double motorVal)
     {
         this.motor.set(cm.PercentOutput, motorVal);
