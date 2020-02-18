@@ -6,7 +6,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-public class BallGatherSys extends Subsystem {
+public class BallGatherSys extends Subsystem 
+{
     private TalonSRX assemblyLineMotor;
     private TalonSRX suctionMotor;
     private TalonSRX shootMotorRight;
@@ -22,11 +23,14 @@ public class BallGatherSys extends Subsystem {
         this.shootMotorLeft = new WPI_TalonSRX(rm.SHOOT_MOTOR_LEFT);
     }
 
-    public void Suck(double suctionMotorVal){
+    public void Suck(double suctionMotorVal)
+    {
         this.assemblyLineMotor.set(cm.PercentOutput, -suctionMotorVal);
         this.suctionMotor.set(cm.PercentOutput, -suctionMotorVal);
     }
-    public void Shoot(double asmblyLineMotorVal, double shootMotorVal){
+    
+    public void Shoot(double asmblyLineMotorVal, double shootMotorVal)
+    {
         this.assemblyLineMotor.set(cm.PercentOutput, -asmblyLineMotorVal);
         this.shootMotorRight.set(cm.PercentOutput, shootMotorVal);
         this.shootMotorLeft.set(cm.PercentOutput, -shootMotorVal);
@@ -37,15 +41,17 @@ public class BallGatherSys extends Subsystem {
         this.assemblyLineMotor.set(cm.PercentOutput, -assemblyLineMotorVal);
     }
 
-    public void emergencyStop(){
+    public void emergencyStop()
+    {
         this.suctionMotor.set(cm.PercentOutput, 0);
         this.assemblyLineMotor.set(cm.PercentOutput, 0);
         this.shootMotorRight.set(cm.PercentOutput, 0);
         this.shootMotorLeft.set(cm.PercentOutput, 0);
     }
+    
     @Override
-    protected void initDefaultCommand() {
+    protected void initDefaultCommand() 
+    {
 
     }
-
 }

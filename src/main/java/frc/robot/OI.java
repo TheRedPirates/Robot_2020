@@ -44,6 +44,7 @@ public class OI {
     this.driverLeftJoystickButtons[1].whileHeld(new ShootBalls());
     this.driverLeftJoystickButtons[3].whileHeld(new GatherBalls());
     this.driverLeftJoystickButtons[2].whileHeld(new MoveBalls());
+    this.driverLeftJoystickButtons[4].whileHeld(new SpinRoulette(this.driverLeftJoystick.getY()));
  } 
    
 
