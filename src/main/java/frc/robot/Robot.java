@@ -167,6 +167,7 @@ public class Robot extends TimedRobot {
     System.out.println("[AutoLine]-> start!");
     aLine = new AutoLine();
     System.out.println("[AutoLine]-> end!");
+    
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
