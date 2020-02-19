@@ -18,6 +18,8 @@ public class OI {
   public Joystick driverRightJoystick;
   public JoystickButton [] driverLeftJoystickButtons;
   public JoystickButton [] driverRightJoystickButtons;
+  // CR 0
+  
   RobotMap robotMap;
   
   public OI()
@@ -26,6 +28,7 @@ public class OI {
    {
     System.out.println("[System]<- Joysick Definition");
     this.driverLeftJoystick = new Joystick(this.robotMap.DRIVER_LEFT_JOYSTICK);
+	// CR 1
     //this.joystick2 = new Joystick(this.robotMap.JOYSTICK_2);
     //this.JbuttonLeft = new JoystickButton[11];
     this.driverLeftJoystickButtons = new JoystickButton[12];
@@ -34,6 +37,7 @@ public class OI {
     }*/
       for(int i = 0; i < driverLeftJoystickButtons.length; i++){
         this.driverLeftJoystickButtons[i] = new JoystickButton(this.driverLeftJoystick,i);
+		// CR 2
       }
     }
     catch (Exception error) {
@@ -41,9 +45,10 @@ public class OI {
     }
     //this.JbuttonRight[6].whileHeld(new moveClimb(0));
     //this.JbuttonLeft[4].whileHeld(new moveClimb(1));
-    this.driverLeftJoystickButtons[1].whileHeld(new ShootBalls());
+   this.driverLeftJoystickButtons[1].whileHeld(new ShootBalls());
     this.driverLeftJoystickButtons[3].whileHeld(new GatherBalls());
     this.driverLeftJoystickButtons[2].whileHeld(new MoveBalls());
+  this.driverLeftJoystickButtons[4].whileHeld(new SpinRoulette(0.9));
  } 
    
 

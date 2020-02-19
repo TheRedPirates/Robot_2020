@@ -37,7 +37,7 @@ public class Robot extends TimedRobot {
   public static AutoLine aLine;
   public static BallGatherSys m_BallGatherSys;
   public static ArcadeDriveSubsystem m_arcadeDriveSys;
-  public static ClimbingSys m_ClimbingSys;
+  public static RouletteSys m_RouletteSys;
   I2C.Port port = I2C.Port.kOnboard;
   ColorSensorV3 ColorSensor = new ColorSensorV3(port);
 
@@ -60,10 +60,13 @@ public class Robot extends TimedRobot {
     m_arcadeDriveSys = new ArcadeDriveSubsystem();
     m_drive = new Drive();
     m_BallGatherSys = new BallGatherSys();
-    m_ClimbingSys = new ClimbingSys();
+    m_RouletteSys = new RouletteSys();
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_oi = new OI();
+	
+	// CR 1
+	
     //String gameData;
 //gameData = DriverStation.getInstance().getGameSpecificMessage();
 // if(gameData.length() > 0)
@@ -108,6 +111,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+	  
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_colorMatcher.addColorMatch(kBlueTarget);
@@ -221,5 +225,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+	  // CR 3
   }
 }

@@ -9,20 +9,19 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+// CR 6
 public class ArcadeDriveSubsystem extends Subsystem {
-    //private RobotMap rm;
-    //public RobotDrive m_RobotDrive;
-    public WPI_TalonSRX T1, T2, T3, T4;
+    public WPI_TalonSRX FRONT_RIGHT_TALON, REAR_RIGHT_TALON, FRONT_LEFT_TALON, REAR_LEFT_TALON; // CR 5
     public DifferentialDrive diffDrive;
     public SpeedControllerGroup d_Right, d_Left;
   public ArcadeDriveSubsystem() {
-    this.T1 = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_FRONT_RIGHT);
-    this.T2 = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_RIGHT);
-    this.d_Right = new SpeedControllerGroup(this.T1, this.T2);
+    this.FRONT_RIGHT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_FRONT_RIGHT);
+    this.REAR_RIGHT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_RIGHT);
+    this.d_Right = new SpeedControllerGroup(this.FRONT_RIGHT_TALON, this.REAR_RIGHT_TALON);
 
-    this.T3 = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_FRONT_LEFT);
-    this.T4 = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_LEFT);
-    this.d_Left = new SpeedControllerGroup(this.T3, this.T4);
+    this.FRONT_LEFT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_FRONT_LEFT);
+    this.REAR_LEFT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_LEFT);
+    this.d_Left = new SpeedControllerGroup(this.FRONT_LEFT_TALON, this.REAR_LEFT_TALON);
     this.diffDrive = new DifferentialDrive(d_Left, d_Right);
     //this.m_RobotDrive.setSafetyEnabled(false);
   }

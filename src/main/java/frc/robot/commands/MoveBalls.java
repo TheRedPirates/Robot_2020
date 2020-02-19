@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class MoveBalls extends Command 
 {
-    private DigitalInput DI;
-    private RobotMap rm;
+    
+
 
     public MoveBalls()
     {
-        // requires(Robot.m_BallGatherSys);
-        // this.DI = new DigitalInput(rm.DIO_A);
+        requires(Robot.m_BallGatherSys);
+        
     }
 
     @Override
     public void execute()
     {
-        Robot.m_BallGatherSys.MoveAssemblyLine(0.9);
+        Robot.m_BallGatherSys.MoveAssemblyLine(0.9); // CR 11
     }
 
     @Override

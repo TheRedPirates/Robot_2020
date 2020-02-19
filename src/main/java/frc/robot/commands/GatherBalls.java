@@ -4,23 +4,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class GatherBalls extends Command 
 {
-    private DigitalInput DI;
-    private RobotMap rm;
+    private DigitalInput DigitalInput; //cr 12
 
     public GatherBalls()
     {
-        //requires(Robot.m_BallGatherSys);
-        //this.DI = new DigitalInput(rm.DIO_A);
+        requires(Robot.m_BallGatherSys);
+        this.DigitalInput = new DigitalInput(RobotMap.DIO_A);
     }
 
     @Override
     public void execute()
     {
-        Robot.m_BallGatherSys.Suck(0.9);
+       if (this.DigitalInput.get())
+       {
+           
+       }
+
+        Robot.m_BallGatherSys.Suck((RobotMap.SUCK_TIME));
     }
 
     @Override

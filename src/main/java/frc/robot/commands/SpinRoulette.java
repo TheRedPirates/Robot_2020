@@ -6,27 +6,28 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 
-public class ShootBalls extends Command 
+public class SpinRoulette extends Command 
 {
-    private DigitalInput DI;
     private RobotMap rm;
+    private double motorVal;   
 
-    public ShootBalls()
+    public SpinRoulette(double motorVal)
     {
-        requires(Robot.m_BallGatherSys);
-        this.DI = new DigitalInput(rm.DIO_A);
+        requires(Robot.m_RouletteSys);
+        this.motorVal = motorVal;
     }
 
     @Override
     public void execute()
     {
-        Robot.m_BallGatherSys.Shoot(0.9, 0.9);
+        Robot.m_RouletteSys.Spin(this.motorVal);
+        
     }
 
     @Override
     protected void end() 
     {
-        Robot.m_BallGatherSys.emergencyStop();
+        Robot.m_RouletteSys.emergencyStop();
     }
 
     @Override
