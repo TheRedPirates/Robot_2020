@@ -19,7 +19,7 @@ public class RobotMap {
   public static final int DRIVE_MOTOR_FRONT_LEFT = 2;
   public static final int DRIVE_MOTOR_REAR_RIGHT = 3;
   public static final int DRIVE_MOTOR_REAR_LEFT = 1;
-  public static final int DRIVER_LEFT_JOYSTICK = 0; // Needs changing
+  public static final int DRIVER_LEFT_JOYSTICK = 1; // Needs changing
   public static final int DRIVER_RIGHT_JOYSTICK = 0; // Needs changing
   public static final int SYSTEMS_JOYSTICK = 2; // Needs changing
   public static final int DIO_A = 1;
@@ -32,6 +32,7 @@ public class RobotMap {
   public static final double MOVE_TIME = 0.5; 
   
   public static int ballCount = 0;
+  public static String colorSensorString = "color";
   
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.

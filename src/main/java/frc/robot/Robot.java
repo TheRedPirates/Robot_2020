@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 import frc.robot.commands.*;
 import frc.robot.triggers.*;
 import frc.robot.subsystems.*;
@@ -76,37 +77,14 @@ public class Robot extends TimedRobot {
 	
 	// CR 1
 	
-    //String gameData;
-//gameData = DriverStation.getInstance().getGameSpecificMessage();
-// if(gameData.length() > 0)
-// {
-//   switch (gameData.charAt(0))
-//   {
-//     case 'B' :
-//       //Blue case code
-//       break;
-//     case 'G' :
-//       //Green case code
-//       break;
-//     case 'R' :
-//       //Red case code
-//       break;
-//     case 'Y' :
-//       //Yellow case code
-//       break;
-//     default :
-//       //This is corrupt data
-//       break;
-//   }
-// } else {
-//   //Code for no data received yet
-// }
+    
+
 
    
 
-    //BGS = new BallGatherSys();
+   // BGS = new BallGatherSys();
     
-    // chooser.addOption("My Auto", new MyAutoCommand());
+   // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -136,21 +114,21 @@ public class Robot extends TimedRobot {
     /**
      * Run the color match algorithm on our detected color
      */
-    String colorString;
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     
     if (match.color == kBlueTarget) {
-      colorString = "B";
+      RobotMap.colorSensorString = "B";
     } else if (match.color == kRedTarget) {
-      colorString = "R";
+      RobotMap.colorSensorString = "R";
     } else if (match.color == kGreenTarget) {
-      colorString = "G";
+      RobotMap.colorSensorString = "G";
     } else if (match.color == kYellowTarget) {
-      colorString = "Y";
+      RobotMap.colorSensorString = "Y";
     } else {
-      colorString = "Unknown";
-    }   
-    SmartDashboard.putString("color", colorString);
+      RobotMap.colorSensorString = "Unknown";
+    }
+    System.out.println(RobotMap.colorSensorString);   
+    SmartDashboard.putString("color", RobotMap.colorSensorString);
    
   }
   /**
@@ -231,8 +209,8 @@ public class Robot extends TimedRobot {
     m_arcadeDriveSys.diffDrive.feedWatchdog();
     m_arcadeDriveSys.Drive(m_oi.getLeftJoystick());
     //System.out.println(m_AssemblyLineSys.isStackLoaderActive());
-    System.out.println(RobotMap.ballCount);
-   
+    //System.out.println(RobotMap.ballCount);
+    //System.out.println(RobotMap.colorSensorString);
     Scheduler.getInstance().run();
   }
 
