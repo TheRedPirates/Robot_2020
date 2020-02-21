@@ -18,7 +18,7 @@ public class AssemblyLineSys extends Subsystem
     public AssemblyLineSys()
     {
         this.assemblyLineMotor = new WPI_TalonSRX(RobotMap.ASSEMBLY_LINE_MOTOR);
-        this.stackLoader = new DigitalInput(RobotMap.DIO_A);
+        this.stackLoader = new DigitalInput(RobotMap.BALL_STACK_MICROSWITCH);
     }
 
     public void MoveAssemblyLine(double assemblyLineMotorVal)

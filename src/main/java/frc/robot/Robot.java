@@ -50,15 +50,11 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
   private final ColorMatch m_colorMatcher = new ColorMatch();
-  private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+  private final Color kBlueTarget = ColorMatch.makeColor(100, 100, 100);
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
   
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
   @Override
   public void robotInit() {
     m_cameraA = new Camera();
@@ -127,7 +123,10 @@ public class Robot extends TimedRobot {
     } else {
       RobotMap.colorSensorString = "Unknown";
     }
-    System.out.println(RobotMap.colorSensorString);   
+    if (RobotMap.colorSensorString == "R")
+    {  
+      System.out.println("Red!");
+    }   
     SmartDashboard.putString("color", RobotMap.colorSensorString);
    
   }
@@ -186,39 +185,30 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopInit() {
+  public void teleopInit() 
+  {
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
-    //this.stackTrigger = new StackLoaderTrigger();
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+  
+    if (m_autonomousCommand != null) 
+    {
+        m_autonomousCommand.cancel();
+    }  
+  }
+
+    @Override
+    public void teleopPeriodic() 
+    {
+      m_arcadeDriveSys.diffDrive.feed();
+      m_arcadeDriveSys.diffDrive.feedWatchdog();
+      m_arcadeDriveSys.Drive(m_oi.getDriverLeftJoystick());
     
-  }
+      Scheduler.getInstance().run();
+    }
 
-  /**
-   * This function is called periodically during operator control.
-   */
-  @Override
-  public void teleopPeriodic() {
-    m_arcadeDriveSys.diffDrive.feed();
-    m_arcadeDriveSys.diffDrive.feedWatchdog();
-    m_arcadeDriveSys.Drive(m_oi.getLeftJoystick());
-    //System.out.println(m_AssemblyLineSys.isStackLoaderActive());
-    //System.out.println(RobotMap.ballCount);
-    //System.out.println(RobotMap.colorSensorString);
-    Scheduler.getInstance().run();
-  }
+    @Override
+    public void testPeriodic() 
+    {
 
-  /**
-   * This function is called periodically during test mode.
-   */
-  @Override
-  public void testPeriodic() {
-	  // CR 3
-  }
+    }
 }

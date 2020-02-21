@@ -1,7 +1,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import static frc.robot.Robot.m_RouletteSys;
+import static frc.robot.Robot.m_arcadeDriveSys;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -13,7 +14,7 @@ public class SpinRoulette extends Command
 
     public SpinRoulette(double motorVal)
     {
-        requires(Robot.m_RouletteSys);
+        requires(m_RouletteSys);
         this.gameData = DriverStation.getInstance().getGameSpecificMessage();
         this.motorVal = motorVal;
     }
@@ -21,14 +22,16 @@ public class SpinRoulette extends Command
     @Override
     public void execute()
     {
-        Robot.m_RouletteSys.Spin(this.motorVal);
+        m_RouletteSys.Spin(this.motorVal);
+        m_arcadeDriveSys.diffDrive.feed();
+        m_arcadeDriveSys.diffDrive.feedWatchdog();
     }
 
     @Override
     protected void end() 
     {
-        Robot.m_RouletteSys.Spin(-0.2);
-        Robot.m_RouletteSys.emergencyStop();
+        //Robot.m_RouletteSys.Spin(-0.2);
+        m_RouletteSys.emergencyStop();
     }
 
     @Override

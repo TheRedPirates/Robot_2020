@@ -13,53 +13,40 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.triggers.StackLoaderTrigger;
 
-public class OI {
-  public Joystick driverLeftJoystick;
-  public Joystick driverRightJoystick;
-  public JoystickButton[] driverLeftJoystickButtons;
-  public JoystickButton[] driverRightJoystickButtons;
-  //public StackLoaderTrigger stackTrigger;
-  // CR 0
+public class OI 
+{
+    public Joystick systemsJoystick;
+    public Joystick driverJoystickLeft;
+    public Joystick driverJoystickRight;
+    public JoystickButton[] systemJoystickButtons;
+    public JoystickButton[] driverJoystickLeftButtons;
+    public JoystickButton[] driverJoystickRightButtons;
 
-  RobotMap robotMap;
-
-  public OI() {
-    try {
-      System.out.println("[System]<- Joysick Definition");
-      //this.stackTrigger = new StackLoaderTrigger();
-      this.driverLeftJoystick = new Joystick(this.robotMap.DRIVER_LEFT_JOYSTICK);
-      // CR 1
-      // this.joystick2 = new Joystick(this.robotMap.JOYSTICK_2);
-      // this.JbuttonLeft = new JoystickButton[11];
-      this.driverLeftJoystickButtons = new JoystickButton[12];
-      /*
-       * for(int i = 0; i<JbuttonLeft.length; i++){ this.JbuttonLeft[i] = new
-       * JoystickButton(this.joystick2,i); }
-       */
-      for (int i = 0; i < driverLeftJoystickButtons.length; i++) {
-        this.driverLeftJoystickButtons[i] = new JoystickButton(this.driverLeftJoystick, i);
-        // CR 2
-      }
-    } catch (Exception error) {
-      System.out.println(error.toString());
+    public OI() 
+    {
+        this.systemsJoystick = new Joystick(RobotMap.SYSTEMS_JOYSTICK);
+        this.driverJoystickLeft = new Joystick(RobotMap.DRIVER_JOYSTICK_LEFT);
+        this.driverJoystickRight = new Joystick(RobotMap.DRIVER_JOYSTICK_RIGHT);
+      
+        for (int buttonNumber = 0; buttonNumber < RobotMap.NUM_OF_JOYSTICK_BUTTONS; buttonNumber++) 
+        { 
+            this.systemJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber);
+            this.driverJoystickLeftButtons[buttonNumber] = new JoystickButton(this.driverJoystickLeft, buttonNumber);
+            this.driverJoystickRightButtons[buttonNumber] = new JoystickButton(this.driverJoystickRight, buttonNumber);
+        }
+      
+        this.systemJoystickButtons[1].whileHeld(new ShootBalls());
+        this.systemJoystickButtons[2].whileHeld(new GatherBall());
+        this.systemJoystickButtons[3].whenPressed(new SpinRoulette(0.9));    
     }
-    // this.JbuttonRight[6].whileHeld(new moveClimb(0));
-    // this.JbuttonLeft[4].whileHeld(new moveClimb(1));
-    this.driverLeftJoystickButtons[1].whileHeld(new ShootBalls());
-    this.driverLeftJoystickButtons[2].whileHeld(new GatherBall());
-    this.driverLeftJoystickButtons[3].whileHeld(new SpinRoulette(0.9));
-    this.driverLeftJoystickButtons[6].whileHeld(new MoveBalls(true));
-    //this.driverLeftJoystickButtons[6].whileHeld(new MoveBalls(false));
-    // this.driverLeftJoystickButtons[5].whileHeld(new MoveBalls(true));
-    // this.driverLeftJoystickButtons[4].whileHeld(new MoveBalls(false));
-  }
 
-  // public Joystick getRightJoystick() {
-  //   return this.driverRightJoystick;
-  // }
+	public Joystick getDriverLeftJoystick() 
+	{
+		return this.driverJoystickLeft;
+    }
 
-  public Joystick getLeftJoystick() {
-    return this.driverLeftJoystick;
-  }
-
+	public Joystick getDriverRightJoystick() 
+	{
+		return this.driverJoystickRight;
+	}
 }

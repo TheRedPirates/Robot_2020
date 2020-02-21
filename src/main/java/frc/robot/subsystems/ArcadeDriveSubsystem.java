@@ -21,7 +21,7 @@ public class ArcadeDriveSubsystem extends Subsystem {
     this.REAR_LEFT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_LEFT);
     this.d_Left = new SpeedControllerGroup(this.FRONT_LEFT_TALON, this.REAR_LEFT_TALON);
     this.diffDrive = new DifferentialDrive(d_Left, d_Right);
-    //this.m_RobotDrive.setSafetyEnabled(false);
+    this.diffDrive.setSafetyEnabled(false);
   }
 
   public void Drive(Joystick stick) {

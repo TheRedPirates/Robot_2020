@@ -13,27 +13,37 @@ package frc.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
-  //public static final int pushRodMotor = 99; // Needs changing
-  public static final int DRIVE_MOTOR_FRONT_RIGHT = 4;
-  public static final int DRIVE_MOTOR_FRONT_LEFT = 2;
-  public static final int DRIVE_MOTOR_REAR_RIGHT = 3;
-  public static final int DRIVE_MOTOR_REAR_LEFT = 1;
-  public static final int DRIVER_LEFT_JOYSTICK = 1; // Needs changing
-  public static final int DRIVER_RIGHT_JOYSTICK = 0; // Needs changing
-  public static final int SYSTEMS_JOYSTICK = 2; // Needs changing
-  public static final int DIO_A = 1;
-  public static final int SHOOT_MOTOR_RIGHT = 8;
-  public static final int SHOOT_MOTOR_LEFT = 7;
-  public static final int ASSEMBLY_LINE_MOTOR = 6;
-  public static final int SUCTION_MOTOR = 5;
-  public static final int ROULETTE_MOTOR = 9;
-  public static final double SUCK_TIME =1;  
-  public static final double MOVE_TIME = 0.5; 
-  
-  public static int ballCount = 0;
-  public static String colorSensorString = "color";
-  
+public class RobotMap 
+{
+    // Joysicks
+    //**************************************
+
+    public static final int DRIVER_JOYSTICK_LEFT = 2;
+    public static final int DRIVER_JOYSTICK_RIGHT = 2;
+    public static final int SYSTEMS_JOYSTICK = 1;
+    public static final int NUM_OF_JOYSTICK_BUTTONS = 12;
+
+    //**************************************
+
+    // Motors
+    //**************************************
+
+    public static final int DRIVE_MOTOR_FRONT_RIGHT = 4;
+    public static final int DRIVE_MOTOR_FRONT_LEFT = 2;
+    public static final int DRIVE_MOTOR_REAR_RIGHT = 3;
+    public static final int DRIVE_MOTOR_REAR_LEFT = 1;
+    public static final int BALL_STACK_MICROSWITCH = 1;
+    public static final int SHOOT_MOTOR_RIGHT = 8;
+    public static final int SHOOT_MOTOR_LEFT = 7;
+    public static final int ASSEMBLY_LINE_MOTOR = 6;
+    public static final int SUCTION_MOTOR = 5;
+    public static final int ROULETTE_MOTOR = 9;
+    public static final double SUCK_TIME = 1;  
+    public static final double MOVE_TIME = 0.5; 
+    
+    public static int ballCount = 0;
+    public static String colorSensorString = "color";
+    
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
