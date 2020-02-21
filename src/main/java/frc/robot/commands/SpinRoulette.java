@@ -27,6 +27,7 @@ public class SpinRoulette extends Command
     @Override
     protected void end() 
     {
+        //Robot.m_RouletteSys.Spin(-0.2);
         Robot.m_RouletteSys.emergencyStop();
     }
 

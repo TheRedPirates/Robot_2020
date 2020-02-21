@@ -8,16 +8,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.AutoLine;
-import frc.robot.commands.Drive;
+import frc.robot.commands.*;
+import frc.robot.triggers.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.DriverStation;
-
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -33,11 +32,16 @@ import edu.wpi.first.wpilibj.util.Color;
  * project.
  */
 public class Robot extends TimedRobot {
+  public static Camera m_cameraA;
+  public static Camera m_cameraB;
   public static OI m_oi;
   public static AutoLine aLine;
   public static BallGatherSys m_BallGatherSys;
+  public static AssemblyLineSys m_AssemblyLineSys;
+  public static BallShootSys m_BallShootSys;
   public static ArcadeDriveSubsystem m_arcadeDriveSys;
   public static RouletteSys m_RouletteSys;
+  public static StackLoaderTrigger stackTrigger;
   I2C.Port port = I2C.Port.kOnboard;
   ColorSensorV3 ColorSensor = new ColorSensorV3(port);
 
@@ -56,13 +60,18 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   
+    m_cameraA = new Camera();
+    m_cameraB = new Camera();
+    System.out.println("started");
     m_arcadeDriveSys = new ArcadeDriveSubsystem();
-    m_drive = new Drive();
+    //m_drive = new Drive();
     m_BallGatherSys = new BallGatherSys();
     m_RouletteSys = new RouletteSys();
+    m_BallShootSys = new BallShootSys();
+    m_AssemblyLineSys = new AssemblyLineSys();
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
+    stackTrigger = new StackLoaderTrigger();
     m_oi = new OI();
 	
 	// CR 1
@@ -114,6 +123,10 @@ public class Robot extends TimedRobot {
 	  
     m_arcadeDriveSys.diffDrive.feed();
     m_arcadeDriveSys.diffDrive.feedWatchdog();
+    //System.out.println(stackTrigger.get());
+    //System.out.println(sMS.get());
+    stackTrigger.whileActive(new MoveBallsTimed());
+
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
@@ -137,7 +150,7 @@ public class Robot extends TimedRobot {
     } else {
       colorString = "Unknown";
     }   
-    System.out.println(colorString);
+    SmartDashboard.putString("color", colorString);
    
   }
   /**
@@ -196,8 +209,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    
-    
+    m_arcadeDriveSys.diffDrive.feed();
+    m_arcadeDriveSys.diffDrive.feedWatchdog();
+    //this.stackTrigger = new StackLoaderTrigger();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -213,11 +227,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    this.m_drive.start();
+    m_arcadeDriveSys.diffDrive.feed();
+    m_arcadeDriveSys.diffDrive.feedWatchdog();
+    m_arcadeDriveSys.Drive(m_oi.getLeftJoystick());
+    //System.out.println(m_AssemblyLineSys.isStackLoaderActive());
+    System.out.println(RobotMap.ballCount);
    
     Scheduler.getInstance().run();
-   
-     
   }
 
   /**

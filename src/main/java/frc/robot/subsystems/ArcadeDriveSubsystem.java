@@ -1,10 +1,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.drive.RobotDriveBase;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,12 +25,21 @@ public class ArcadeDriveSubsystem extends Subsystem {
   }
 
   public void Drive(Joystick stick) {
+    this.diffDrive.feedWatchdog();
+    this.diffDrive.feed();
     double diffX, diffY;
-    diffX = stick.getX();
-    diffY = -stick.getY();
-    System.out.println(diffX+","+diffY);
+    if (Math.abs(stick.getX()) >= Math.abs(stick.getZ())){
+      //if(Math.abs(stick.getX())*0.85 > (1/100)){
+        diffX = stick.getX() * 0.85;
+      //}
+      
+    }else{
+      diffX = stick.getZ() * 0.80;
+    }
+    diffY = -stick.getY() * 0.75;
     this.diffDrive.arcadeDrive(diffY, diffX);
     this.diffDrive.feedWatchdog();
+    this.diffDrive.feed();
   }
   public void DriveFwd(){
     this.diffDrive.arcadeDrive(0.5, 0);

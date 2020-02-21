@@ -1,37 +1,48 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.DigitalInput;
+import static frc.robot.Robot.m_AssemblyLineSys;;
 
+public class MoveBalls extends Command {
+    private boolean toReverse;
 
-public class MoveBalls extends Command 
-{
-    
-
-
-    public MoveBalls()
+    public MoveBalls(boolean toReverse) 
     {
-        requires(Robot.m_BallGatherSys);
-        
+        this.toReverse = toReverse;
+        requires(m_AssemblyLineSys);
     }
 
     @Override
     public void execute()
     {
-        Robot.m_BallGatherSys.MoveAssemblyLine(0.9); // CR 11
+        if (toReverse)
+        {
+            m_AssemblyLineSys.MoveAssemblyLine(0.5);
+        }
+        else
+        {
+            m_AssemblyLineSys.MoveAssemblyLine(-0.5);
+        }
     }
 
     @Override
     protected void end()
     {
-        Robot.m_BallGatherSys.emergencyStop();
+        m_AssemblyLineSys.emergencyStop();
+        //System.out.println("finished MoveBalls");
     }
 
     @Override
     protected boolean isFinished() 
     {
         return false;
+    }
+    
+    @Override
+    protected void initialize()
+    {
+        
+        System.out.println("started MoveBallsTimed");
+    
     }
 }

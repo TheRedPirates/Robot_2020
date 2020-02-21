@@ -1,43 +1,37 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+import static frc.robot.Robot.m_AssemblyLineSys;
+import static frc.robot.Robot.m_BallGatherSys;
 import frc.robot.RobotMap;
+import frc.robot.triggers.StackLoaderTrigger;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-public class GatherBalls extends Command 
+public class GatherBall extends Command 
 {
-    private DigitalInput DigitalInput; //cr 12
-
-    public GatherBalls()
+    public GatherBall()
     {
-        requires(Robot.m_BallGatherSys);
-        this.DigitalInput = new DigitalInput(RobotMap.DIO_A);
+        requires(m_BallGatherSys);
     }
 
     @Override
     public void execute()
     {
-       if (this.DigitalInput.get())
-       {
-           
-       }
-
-        Robot.m_BallGatherSys.Suck((RobotMap.SUCK_TIME));
+        m_BallGatherSys.Suck(0.6);
     }
 
     @Override
     protected void end()
     {
-        Robot.m_BallGatherSys.emergencyStop();
+        m_BallGatherSys.emergencyStop();
     }
 
     @Override
     protected boolean isFinished() 
     {
-        return false;
+       return m_AssemblyLineSys.isStackLoaderActive();
     }
 }
