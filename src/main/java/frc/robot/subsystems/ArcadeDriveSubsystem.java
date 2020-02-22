@@ -32,7 +32,7 @@ public class ArcadeDriveSubsystem extends Subsystem {
   public void Drive() {
     this.diffDrive.feedWatchdog();
     this.diffDrive.feed();
-    this.diffDrive.tankDrive(this.leftStick.getY(), this.rightStick.getY());
+    this.diffDrive.tankDrive(-this.leftStick.getY() * 0.8, -this.rightStick.getY() * 0.8);
     this.diffDrive.feedWatchdog();
     this.diffDrive.feed();
   }

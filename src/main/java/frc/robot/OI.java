@@ -15,29 +15,29 @@ import frc.robot.triggers.StackLoaderTrigger;
 
 public class OI 
 {
-    public Joystick systemsJoystick;
+    //public Joystick systemsJoystick;
     public Joystick driverJoystickLeft;
     public Joystick driverJoystickRight;
-    public JoystickButton[] systemJoystickButtons;
+    //public JoystickButton[] systemJoystickButtons;
     public JoystickButton[] driverJoystickLeftButtons;
     public JoystickButton[] driverJoystickRightButtons;
 
     public OI() 
     {
-        this.systemsJoystick = new Joystick(RobotMap.SYSTEMS_JOYSTICK);
+        //this.systemsJoystick = new Joystick(RobotMap.SYSTEMS_JOYSTICK);
         this.driverJoystickLeft = new Joystick(RobotMap.DRIVER_JOYSTICK_LEFT);
         this.driverJoystickRight = new Joystick(RobotMap.DRIVER_JOYSTICK_RIGHT);
       
         for (int buttonNumber = 0; buttonNumber < RobotMap.NUM_OF_JOYSTICK_BUTTONS; buttonNumber++) 
         { 
-            this.systemJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber);
-            this.driverJoystickLeftButtons[buttonNumber] = new JoystickButton(this.driverJoystickLeft, buttonNumber);
-            this.driverJoystickRightButtons[buttonNumber] = new JoystickButton(this.driverJoystickRight, buttonNumber);
+            //this.systemJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber);
+            //this.driverJoystickLeftButtons[buttonNumber] = new JoystickButton(this.driverJoystickLeft, buttonNumber);
+            //this.driverJoystickRightButtons[buttonNumber] = new JoystickButton(this.driverJoystickRight, buttonNumber);
         }
       
-        this.systemJoystickButtons[1].whileHeld(new ShootBalls());
-        this.systemJoystickButtons[2].whileHeld(new GatherBall());
-        this.systemJoystickButtons[3].whenPressed(new SpinRoulette(0.9));    
+        //this.systemJoystickButtons[1].whileHeld(new ShootBalls());
+        //this.systemJoystickButtons[2].whileHeld(new GatherBall());
+        //this.systemJoystickButtons[3].whenPressed(new SpinRoulette(0.9));    
     }
 
 	public Joystick getDriverLeftJoystick() 
