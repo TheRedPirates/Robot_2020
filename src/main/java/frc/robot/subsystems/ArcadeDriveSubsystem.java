@@ -12,7 +12,10 @@ public class ArcadeDriveSubsystem extends Subsystem {
     public WPI_TalonSRX FRONT_RIGHT_TALON, REAR_RIGHT_TALON, FRONT_LEFT_TALON, REAR_LEFT_TALON; // CR 5
     public DifferentialDrive diffDrive;
     public SpeedControllerGroup d_Right, d_Left;
-  public ArcadeDriveSubsystem() {
+    private Joystick leftStick;
+    private Joystick rightStick;
+
+  public ArcadeDriveSubsystem(Joystick leftStick, Joystick rightStick) {
     this.FRONT_RIGHT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_FRONT_RIGHT);
     this.REAR_RIGHT_TALON = new WPI_TalonSRX(RobotMap.DRIVE_MOTOR_REAR_RIGHT);
     this.d_Right = new SpeedControllerGroup(this.FRONT_RIGHT_TALON, this.REAR_RIGHT_TALON);
@@ -22,22 +25,14 @@ public class ArcadeDriveSubsystem extends Subsystem {
     this.d_Left = new SpeedControllerGroup(this.FRONT_LEFT_TALON, this.REAR_LEFT_TALON);
     this.diffDrive = new DifferentialDrive(d_Left, d_Right);
     this.diffDrive.setSafetyEnabled(false);
+    this.leftStick = leftStick;
+    this.rightStick = rightStick;
   }
 
-  public void Drive(Joystick stick) {
+  public void Drive() {
     this.diffDrive.feedWatchdog();
     this.diffDrive.feed();
-    double diffX, diffY;
-    if (Math.abs(stick.getX()) >= Math.abs(stick.getZ())){
-      //if(Math.abs(stick.getX())*0.85 > (1/100)){
-        diffX = stick.getX() * 0.85;
-      //}
-      
-    }else{
-      diffX = stick.getZ() * 0.80;
-    }
-    diffY = -stick.getY() * 0.75;
-    this.diffDrive.arcadeDrive(diffY, diffX);
+    this.diffDrive.tankDrive(this.leftStick.getY(), this.rightStick.getY());
     this.diffDrive.feedWatchdog();
     this.diffDrive.feed();
   }

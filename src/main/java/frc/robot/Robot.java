@@ -60,18 +60,16 @@ public class Robot extends TimedRobot {
     m_cameraA = new Camera();
     m_cameraB = new Camera();
     System.out.println("started");
-    m_arcadeDriveSys = new ArcadeDriveSubsystem();
-    //m_drive = new Drive();
     m_BallGatherSys = new BallGatherSys();
     m_RouletteSys = new RouletteSys();
     m_BallShootSys = new BallShootSys();
     m_AssemblyLineSys = new AssemblyLineSys();
-    m_arcadeDriveSys.diffDrive.feed();
-    m_arcadeDriveSys.diffDrive.feedWatchdog();
     stackTrigger = new StackLoaderTrigger();
     m_oi = new OI();
-	
-	// CR 1
+    m_arcadeDriveSys = new ArcadeDriveSubsystem(m_oi.getDriverLeftJoystick(), m_oi.getDriverRightJoystick());
+    m_arcadeDriveSys.diffDrive.feed();
+    m_arcadeDriveSys.diffDrive.feedWatchdog();
+    
 	
     
 
@@ -201,7 +199,7 @@ public class Robot extends TimedRobot {
     {
       m_arcadeDriveSys.diffDrive.feed();
       m_arcadeDriveSys.diffDrive.feedWatchdog();
-      m_arcadeDriveSys.Drive(m_oi.getDriverLeftJoystick());
+      m_arcadeDriveSys.Drive();
     
       Scheduler.getInstance().run();
     }
