@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import frc.robot.RobotMap;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 public class ClimbingSys extends Subsystem 
 {
@@ -20,17 +21,22 @@ public class ClimbingSys extends Subsystem
     public void openRacK(double motorVal)
     {
         this.openRackMotor.set(ControlMode.PercentOutput, motorVal);
+        System.out.println("Open!");
     }
 
     public void closeRack(double motorVal)
     {
-        this.closeRackMotor.set(ControlMode.PercentOutput, motorVal);
+        this.openRackMotor.set(ControlMode.PercentOutput,-motorVal);
+        System.out.println("Closed!");
     }
 
     public void emergencyStop()
     {
         this.openRackMotor.set(ControlMode.PercentOutput, 0);
         this.closeRackMotor.set(ControlMode.PercentOutput, 0);
+        this.openRackMotor.setNeutralMode(NeutralMode.Brake);
+        this.closeRackMotor.setNeutralMode(NeutralMode.Brake);
+
     }
     
     @Override

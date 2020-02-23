@@ -35,6 +35,6 @@ public class SpinRoulette extends Command
     @Override
     protected boolean isFinished() 
     {
-        return RobotMap.colorSensorString.charAt(0) == this.gameData.charAt(0);
+        return RobotMap.colorSensorString.charAt(0) == 'R';
     }
 }

@@ -17,7 +17,6 @@ public class Robot extends TimedRobot
 {
     public static CameraSys m_CameraSys;
     public static OI m_oi;
-    public static AutoLine aLine;
     public static BallGatherSys m_BallGatherSys;
     public static ClimbingSys m_ClimbingSys;
     public static AssemblyLineSys m_AssemblyLineSys;
@@ -33,6 +32,7 @@ public class Robot extends TimedRobot
     public static ColorMatchResult match;
     public static Command m_autonomousCommand;
     public static SendableChooser<Command> m_chooser;
+	public static AutoLine autoLine;
 
     @Override
     public void robotInit() 
@@ -109,11 +109,12 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousInit() 
     {
-        m_autonomousCommand = m_chooser.getSelected();
         System.out.println("[AutoLine]-> start!");
-        aLine = new AutoLine();
+        autoLine = new AutoLine();
         System.out.println("[AutoLine]-> end!");
 
+        m_autonomousCommand = m_chooser.getSelected();
+        
         if (m_autonomousCommand != null) 
         {
             m_autonomousCommand.start();

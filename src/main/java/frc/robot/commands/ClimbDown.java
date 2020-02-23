@@ -13,7 +13,7 @@ public class ClimbDown extends Command
     @Override
     public void execute()
     {
-        m_ClimbingSys.closeRack(0.9);
+        m_ClimbingSys.closeRack(0.5);
     }
 
     @Override

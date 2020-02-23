@@ -13,7 +13,7 @@ public class ClimbUp extends Command
     @Override
     public void execute()
     {
-        m_ClimbingSys.openRacK(0.9);
+        m_ClimbingSys.openRacK(0.5);
     }
 
     @Override

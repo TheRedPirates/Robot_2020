@@ -1,28 +1,27 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AutoLine extends Command
+public class AutoLine extends CommandGroup
 {
     Drive drv; 
-    CommandGroup cmdGrp;
-    
+    //CommandGroup cmdGrp;
+    private boolean isFin = false;
     public AutoLine()
     {
-        cmdGrp.addParallel(new DriveFwd(), 1.5);
+        addParallel(new DriveFwd(), 1);
+        isFin = true;
     }
 
-    @Override
-    public void execute()
-    {
-         
-    }
+    // @Override
+    // public void execute()
+    // {
+    // }
 
 	@Override
 	protected boolean isFinished() 
     {
-		return false;
+		return isFin;
 	}
     
 }

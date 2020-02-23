@@ -22,7 +22,8 @@ public class RouletteSys extends Subsystem
         this.motor.set(ControlMode.PercentOutput, motorVal);
     }
 
-    public void emergencyStop()
+    public void 
+    emergencyStop()
     {
         this.motor.set(ControlMode.PercentOutput, 0);
         this.motor.setNeutralMode(NeutralMode.Brake);

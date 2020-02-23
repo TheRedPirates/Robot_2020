@@ -44,7 +44,10 @@ public class ArcadeDriveSubsystem extends Subsystem
 
     public void DriveFwd()
     {
+
         this.diffDrive.arcadeDrive(0.5, 0);
+        this.diffDrive.feedWatchdog();
+        this.diffDrive.feed();
     }
 
     @Override
