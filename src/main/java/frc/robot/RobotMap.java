@@ -10,7 +10,14 @@ public class RobotMap
     public static final int DRIVER_JOYSTICK_LEFT = 1;
     public static final int DRIVER_JOYSTICK_RIGHT = 3;
     public static final int SYSTEMS_JOYSTICK = 0;
+    
+    // Buttons
     public static final int NUM_OF_JOYSTICK_BUTTONS = 12;
+    public static final int SHOOT_BALLS_BUTTON = 1;
+    public static final int GATHER_BALLS_BUTTON = 2;
+    public static final int ROULETTE_BUTTON = 3;
+    public static final int CLIMB_DOWN_BUTTON = 4;
+    public static final int CLIMB_UP_BUTTON = 6;
 
 	// Drive
     public static final int DRIVE_MOTOR_FRONT_RIGHT = 4;

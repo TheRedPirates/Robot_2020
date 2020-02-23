@@ -32,10 +32,10 @@ public class OI
             this.driverJoystickButtons[buttonNumber] = new JoystickButton(this.driverJoystick, buttonNumber);
         }
        
-        this.systemsJoystickButtons[1].whileHeld(new ShootBalls());
-        this.systemsJoystickButtons[3].whenPressed(new SpinRoulette(0.9)); 
-        this.systemsJoystickButtons[4].whileHeld(new ClimbDown());
-        this.systemsJoystickButtons[6].whileHeld(new ClimbUp());
+        this.systemsJoystickButtons[RobotMap.SHOOT_BALLS_BUTTON].whileHeld(new ShootBalls());
+        this.systemsJoystickButtons[RobotMap.ROULETTE_BUTTON].whenPressed(new SpinRoulette(0.9)); 
+        this.systemsJoystickButtons[RobotMap.CLIMB_DOWN_BUTTON].whileHeld(new ClimbDown());
+        this.systemsJoystickButtons[RobotMap.CLIMB_UP_BUTTON].whileHeld(new ClimbUp());
     }
 
 	public Joystick getDriverJoystick() 
@@ -50,6 +50,6 @@ public class OI
     
     public JoystickButton getGatherButton()
     {
-        return this.systemsJoystickButtons[2];
+        return this.systemsJoystickButtons[RobotMap.GATHER_BALLS_BUTTON];
     }
 }
