@@ -1,14 +1,11 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.hal.sim.DigitalPWMSim;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import edu.wpi.first.wpilibj.DigitalInput;
 
-// CR 7
 public class BallGatherSys extends Subsystem 
 {
     private TalonSRX suctionMotor;
@@ -31,6 +28,5 @@ public class BallGatherSys extends Subsystem
     @Override
     protected void initDefaultCommand() 
     {
-
     }
 }

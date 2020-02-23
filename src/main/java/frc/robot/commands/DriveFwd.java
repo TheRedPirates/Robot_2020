@@ -14,7 +14,7 @@ public class DriveFwd extends Command
   protected void execute() 
   {
   	  Robot.m_arcadeDriveSys.DriveFwd();
-  	  Robot.m_arcadeDriveSys.diffDrive.feedWatchdog();
+  	  //Robot.m_arcadeDriveSys.diffDrive.feedWatchdog();
   }
   
   @Override

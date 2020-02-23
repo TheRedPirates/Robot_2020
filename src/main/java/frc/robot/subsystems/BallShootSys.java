@@ -6,7 +6,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-// CR 7
 public class BallShootSys extends Subsystem 
 {
     private TalonSRX rightMotor;
@@ -33,6 +32,5 @@ public class BallShootSys extends Subsystem
     @Override
     protected void initDefaultCommand() 
     {
-
     }
 }

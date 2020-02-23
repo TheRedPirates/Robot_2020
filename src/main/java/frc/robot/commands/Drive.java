@@ -14,7 +14,6 @@ public class Drive extends Command
     protected void execute() 
     {
         m_arcadeDriveSys.Drive();
-        m_arcadeDriveSys.diffDrive.feedWatchdog();
     }
 
     @Override

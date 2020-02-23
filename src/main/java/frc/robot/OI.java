@@ -7,46 +7,49 @@
 
 package frc.robot;
 
-import frc.robot.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.triggers.StackLoaderTrigger;
 
 public class OI 
 {
-    //public Joystick systemsJoystick;
-    public Joystick driverJoystickLeft;
-    public Joystick driverJoystickRight;
-    //public JoystickButton[] systemJoystickButtons;
-    public JoystickButton[] driverJoystickLeftButtons;
-    public JoystickButton[] driverJoystickRightButtons;
+    public Joystick systemsJoystick;
+    public Joystick driverJoystick;
+    public JoystickButton[] systemsJoystickButtons;
+    public JoystickButton[] driverJoystickButtons;
 
     public OI() 
     {
-        //this.systemsJoystick = new Joystick(RobotMap.SYSTEMS_JOYSTICK);
-        this.driverJoystickLeft = new Joystick(RobotMap.DRIVER_JOYSTICK_LEFT);
-        this.driverJoystickRight = new Joystick(RobotMap.DRIVER_JOYSTICK_RIGHT);
+        this.systemsJoystick = new Joystick(RobotMap.SYSTEMS_JOYSTICK);
+        this.driverJoystick = new Joystick(RobotMap.DRIVER_JOYSTICK_LEFT);
+
+        this.systemsJoystickButtons = new JoystickButton[12];
+        this.driverJoystickButtons = new JoystickButton[12];
       
         for (int buttonNumber = 0; buttonNumber < RobotMap.NUM_OF_JOYSTICK_BUTTONS; buttonNumber++) 
-        { 
-            //this.systemJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber);
-            //this.driverJoystickLeftButtons[buttonNumber] = new JoystickButton(this.driverJoystickLeft, buttonNumber);
-            //this.driverJoystickRightButtons[buttonNumber] = new JoystickButton(this.driverJoystickRight, buttonNumber);
+        {
+            this.systemsJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber); 
+            this.driverJoystickButtons[buttonNumber] = new JoystickButton(this.driverJoystick, buttonNumber);
         }
-      
-        //this.systemJoystickButtons[1].whileHeld(new ShootBalls());
-        //this.systemJoystickButtons[2].whileHeld(new GatherBall());
-        //this.systemJoystickButtons[3].whenPressed(new SpinRoulette(0.9));    
+       
+        this.systemsJoystickButtons[1].whileHeld(new ShootBalls());
+        this.systemsJoystickButtons[3].whenPressed(new SpinRoulette(0.9)); 
+        this.systemsJoystickButtons[4].whileHeld(new ClimbDown());
+        this.systemsJoystickButtons[6].whileHeld(new ClimbUp());
     }
 
-	public Joystick getDriverLeftJoystick() 
+	public Joystick getDriverJoystick() 
 	{
-		return this.driverJoystickLeft;
+		return this.driverJoystick;
     }
 
-	public Joystick getDriverRightJoystick() 
+	public Joystick getSystemsJoystick() 
 	{
-		return this.driverJoystickRight;
-	}
+		return this.systemsJoystick;
+    }
+    
+    public JoystickButton getGatherButton()
+    {
+        return this.systemsJoystickButtons[2];
+    }
 }
