@@ -22,8 +22,6 @@ public class SpinRoulette extends Command
     public void execute()
     {
         m_RouletteSys.Spin(this.motorVal);
-        //m_arcadeDriveSys.diffDrive.feed();
-        //m_arcadeDriveSys.diffDrive.feedWatchdog();
     }
 
     @Override
@@ -35,6 +33,6 @@ public class SpinRoulette extends Command
     @Override
     protected boolean isFinished() 
     {
-        return RobotMap.colorSensorString.charAt(0) == 'R';
+        return RobotMap.colorSensorString.charAt(0) == gameData.charAt(0);
     }
 }
