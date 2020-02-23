@@ -45,6 +45,7 @@ public class RobotMap
     // Climbing
     public static final int OPEN_RACK_MOTOR = 10;
     public static final int CLOSE_RACK_MOTOR = 11;
+    public static final int OPEN_RACK_MICROSWITCH_PORT = 0;
 
 	// Cameras
 	public static final int SUCK_CAMERA_PORT = 0;

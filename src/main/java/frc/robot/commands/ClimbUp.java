@@ -16,6 +16,7 @@ public class ClimbUp extends Command
         m_ClimbingSys.openRacK(0.5);
     }
 
+
     @Override
     protected void end() 
     {
@@ -25,6 +26,6 @@ public class ClimbUp extends Command
     @Override
     protected boolean isFinished() 
     {
-        return false;
+       return m_ClimbingSys.getMicroSwitch();
     }
 }
