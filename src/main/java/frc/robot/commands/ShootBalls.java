@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ShootBalls extends Command 
 {
@@ -16,6 +17,11 @@ public class ShootBalls extends Command
     {
         Robot.m_AssemblyLineSys.MoveAssemblyLine(0.9);
         Robot.m_BallShootSys.Shoot(0.9);
+
+        if (RobotMap.ballCount == 5)
+        {
+            RobotMap.ballCount = 0;
+        }
     }
 
     @Override
