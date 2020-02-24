@@ -16,8 +16,9 @@ public class RobotMap
     public static final int SHOOT_BALLS_BUTTON = 1;
     public static final int GATHER_BALLS_BUTTON = 2;
     public static final int ROULETTE_BUTTON = 3;
-    public static final int CLIMB_DOWN_BUTTON = 4;
-    public static final int CLIMB_UP_BUTTON = 6;
+    public static final int CLOSE_RACK_BUTTON = 4;
+    public static final int CLIMB_BUTTON = 5;
+    public static final int OPEN_RACK_BUTTON = 6;
 
 	// Drive
     public static final int DRIVE_MOTOR_FRONT_RIGHT = 4;
@@ -43,9 +44,9 @@ public class RobotMap
     public static final Color YELLOW = ColorMatch.makeColor(1, 1, 0);
 
     // Climbing
-    public static final int OPEN_RACK_MOTOR = 10;
-    public static final int CLOSE_RACK_MOTOR = 11;
-    public static final int OPEN_RACK_MICROSWITCH_PORT = 0;
+    public static final int RACK_MOTOR = 10;
+    public static final int CLIMB_MOTOR = 11;
+    public static final int RACK_MICROSWITCH_PORT = 0;
 
 	// Cameras
 	public static final int SUCK_CAMERA_PORT = 0;

@@ -59,8 +59,6 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic() 
     {
-        System.out.println(m_ClimbingSys.getMicroSwitch());
-
         m_ColorMatcher.addColorMatch(RobotMap.BLUE);
         m_ColorMatcher.addColorMatch(RobotMap.GREEN);
         m_ColorMatcher.addColorMatch(RobotMap.RED);

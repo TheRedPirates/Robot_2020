@@ -3,9 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import static frc.robot.Robot.m_ClimbingSys;
 
-public class ClimbDown extends Command 
+public class OpenRack extends Command 
 { 
-    public ClimbDown()
+    public OpenRack()
     {
         requires(m_ClimbingSys);
     }
@@ -13,7 +13,7 @@ public class ClimbDown extends Command
     @Override
     public void execute()
     {
-        m_ClimbingSys.closeRack(0.5);
+        m_ClimbingSys.openRacK(0.5);
     }
 
     @Override
@@ -25,6 +25,6 @@ public class ClimbDown extends Command
     @Override
     protected boolean isFinished() 
     {
-        return false;
+       return m_ClimbingSys.getStopper();
     }
 }

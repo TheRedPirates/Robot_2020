@@ -31,12 +31,12 @@ public class OI
             this.systemsJoystickButtons[buttonNumber] = new JoystickButton(this.systemsJoystick, buttonNumber); 
             this.driverJoystickButtons[buttonNumber] = new JoystickButton(this.driverJoystick, buttonNumber);
         }
-       
     
         this.systemsJoystickButtons[RobotMap.SHOOT_BALLS_BUTTON].whileHeld(new ShootBalls());
         this.systemsJoystickButtons[RobotMap.ROULETTE_BUTTON].whenPressed(new SpinRoulette(0.9)); 
-        this.systemsJoystickButtons[RobotMap.CLIMB_DOWN_BUTTON].whileHeld(new ClimbDown());
-        this.systemsJoystickButtons[RobotMap.CLIMB_UP_BUTTON].whileHeld(new ClimbUp());
+        this.systemsJoystickButtons[RobotMap.CLOSE_RACK_BUTTON].whileHeld(new CloseRack());
+        this.systemsJoystickButtons[RobotMap.CLIMB_BUTTON].whileHeld(new Climb());
+        this.systemsJoystickButtons[RobotMap.OPEN_RACK_BUTTON].whileHeld(new OpenRack());
     }
 
 	public Joystick getDriverJoystick() 
